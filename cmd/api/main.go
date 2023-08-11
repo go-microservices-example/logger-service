@@ -52,7 +52,8 @@ func main() {
 	}
 
 	// start web server
-	go app.serve()
+	log.Printf("Starting web server on port %s", webPort)
+	app.serve()
 }
 
 func (app *Config) serve() {
@@ -63,7 +64,7 @@ func (app *Config) serve() {
 
 	err := srv.ListenAndServe()
 	if err != nil {
-		log.Panic()
+		log.Panic(err)
 	}
 }
 
